@@ -13,6 +13,8 @@ import javafx.scene.web.WebEngine;
 import javafx.scene.web.WebView;
 
 import javax.inject.Inject;
+
+import org.apache.catalina.Engine;
 import org.controlsfx.control.action.Action;
 import org.controlsfx.control.action.ActionMap;
 import org.controlsfx.control.action.ActionProxy;
@@ -53,6 +55,10 @@ public class PrimaryController {
         
         WebEngine engine = myweb.getEngine();
         engine.load(homeAddress);
+        
+        url.setOnAction(event -> {
+        	engine.load(url.getText());
+        });
         
         home.setOnAction(event -> {
         	url.setText(homeAddress);
